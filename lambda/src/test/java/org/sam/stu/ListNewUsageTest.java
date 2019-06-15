@@ -1,6 +1,5 @@
 package org.sam.stu;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,8 +34,8 @@ public class ListNewUsageTest {
                 new Food(1003, "potato", 22, 40D),
                 new Food(1004, "apple", 42, 20D),
                 new Food(1005, "pear", 10, 5D),
-                new Food(1006, "banana2", 20, 10D),
-                new Food(1007, "banana3", 20, 10D)
+                new Food(1006, "banana2", 21, 10D),
+                new Food(1007, "banana3", 23, 10D)
         ).collect(Collectors.toList());
 
         foodList1 = Stream.of(
@@ -117,15 +116,6 @@ public class ListNewUsageTest {
     @Test
     public void test7() {
         foodList.stream().filter(food -> food.getWeight() >= 20D).forEach(food -> System.out.println("food = " + JSONObject.toJSONString(food)));
-    }
-
-    /**
-     * 模糊匹配食物信息
-     */
-    @Test
-    public void test17() {
-        String keyword = "ba";
-        foodList.stream().filter(food -> food.getName().contains(keyword)).forEach(food -> System.out.println("food = " + JSONObject.toJSONString(food)));
     }
 
     /**
@@ -247,5 +237,34 @@ public class ListNewUsageTest {
         //求所有水果总数量
         int sumCount = foodList.stream().mapToInt(Food::getCount).sum();
         System.out.println("所有水果总量 = " + sumCount);
+    }
+
+    /**
+     * 模糊匹配食物信息
+     */
+    @Test
+    public void test17() {
+        String keyword = "ba";
+        foodList.stream().filter(food -> food.getName().contains(keyword)).forEach(food -> System.out.println("food = " + JSONObject.toJSONString(food)));
+    }
+
+    /**
+     * 根据重量对食物进行分组
+     */
+    @Test
+    public void test18() {
+
+        Map<Double, List<Food>> foodGroup = foodList.stream().collect(Collectors.groupingBy(food -> food.getWeight()));
+        System.out.println("weight:FoodGroup = " + JSONObject.toJSONString(foodGroup));
+    }
+
+    /**
+     * 根据数量-->与食物名称映射
+     */
+    @Test
+    public void test19() {
+        Map<Integer, String> foodNameMap = foodList.stream()
+                .collect(Collectors.toMap(food -> food.getCount(), food -> food.getName()));
+        System.out.println("count:name = " + JSONObject.toJSONString(foodNameMap));
     }
 }
