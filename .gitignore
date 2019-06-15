@@ -1,5 +1,4 @@
 ### IntelliJ IDEA ###
-.gitee
 .idea
 *.iws
 *.iml
@@ -11,4 +10,3 @@ HELP.md
 *.class
 target/
 *.iml
-*.md

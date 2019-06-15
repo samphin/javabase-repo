@@ -1,7 +1,9 @@
-package org.sam.stu;
+package org.sam.stu.singleton;
 
 /**
  * 通过内部类形式，创建单例对象
+ * @author samphin
+ * @date 2019-6-15 17:04:33
  */
 public class Singleton {
 
@@ -12,7 +14,7 @@ public class Singleton {
     }
 
     public static class SingletonInner{
-        private final static Singleton INSTANCE = new Singleton();
+        private static Singleton INSTANCE = new Singleton();
     }
 
     public static void main(String[] args) {

@@ -8,6 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="design-model" />
         <module name="lambda" />
+        <module name="netty" />
+        <module name="nio" />
+        <module name="thread" />
       </profile>
     </annotationProcessing>
   </component>

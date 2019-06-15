@@ -33,18 +33,16 @@ public class StreamTest {
      * 将流转换成Integer数组
      */
     @Test
-    public void list2ArrayTest(){
+    public void test1(){
         Integer[] numArray = stream.toArray(Integer[]::new);
-        for (int i = 0; i < numArray.length; i++) {
-            System.out.println("numArray = " + numArray[i]);
-        }
+        Arrays.stream(numArray).forEach(System.out::println);
     }
 
     /**
      * 涉及拆箱、装箱操作的转换
      */
     @Test
-    public void list2ArrayTest1(){
+    public void test2(){
         int[] numArray = stream.mapToInt(n->n).toArray();
     }
 
@@ -52,7 +50,7 @@ public class StreamTest {
      * 将Integer类型集合转换成String类型集合
      */
     @Test
-    public void integerList2StringListTest(){
+    public void test3(){
         List<Integer> intList = stream.collect(Collectors.toList());
         String[] stringArray = intList.stream().map(String::valueOf).toArray(String[]::new);
         Stream.of(stringArray).forEach(System.out::println);
