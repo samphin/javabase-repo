@@ -1,11 +1,12 @@
 package org.sam.stu;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import org.junit.Before;
 import org.junit.Test;
 import org.sam.stu.po.Food;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -17,11 +18,42 @@ import java.util.stream.Stream;
  */
 public class ListNewUsageTest {
 
+    private List<Food> foodList;
+
+    private List<Food> foodList1;
+
+    private List<Food> foodList2;
+
+    private List<List<Food>> collectFoodList;
+
+    @Before
+    public void init() {
+        //初始化集合元素
+        foodList = Stream.of(
+                new Food(1001, "banana", 20, 10D),
+                new Food(1002, "tomato", 30, 22D),
+                new Food(1003, "potato", 22, 40D),
+                new Food(1004, "apple", 42, 20D),
+                new Food(1005, "pear", 10, 5D),
+                new Food(1006, "banana2", 20, 10D),
+                new Food(1007, "banana3", 20, 10D)
+        ).collect(Collectors.toList());
+
+        foodList1 = Stream.of(
+                new Food(1008, "lemon", 60, 30D)
+        ).collect(Collectors.toList());
+
+        foodList2 = Stream.of(new Food(1009, "pitaya", 33, 18D)
+        ).collect(Collectors.toList());
+
+        collectFoodList = Stream.of(foodList, foodList1, foodList2).collect(Collectors.toList());
+    }
+
     /**
      * 遍历List
      */
     @Test
-    public void foreachListTest() {
+    public void test1() {
         List<String> list = Stream.of("a", "b", "c").collect(Collectors.toList());
         list.forEach(s -> System.out.println("s = " + s));
     }
@@ -30,7 +62,7 @@ public class ListNewUsageTest {
      * 过滤List，输出集合大于等于30的元素
      */
     @Test
-    public void filterListContentTest() {
+    public void test2() {
         Stream.of(30, 20, 10, 29, 35).filter(num -> num >= 30).forEach(num -> System.out.println(num));
     }
 
@@ -38,21 +70,20 @@ public class ListNewUsageTest {
      * 对集合进行倒序操作，方法一
      */
     @Test
-    public void sortListTest() {
+    public void test3() {
         List<Integer> list = Stream.of(30, 20, 10, 29, 35).collect(Collectors.toList());
         list.sort((a, b) -> b - a);
-        list.forEach(num -> System.out.println(num));
+        list.forEach(System.out::println);
     }
 
     /**
      * 对集合进行倒序操作，方法二
      */
     @Test
-    public void sortListTest2() {
+    public void test4() {
         List<Integer> list = Stream.of(30, 20, 10, 29, 35).collect(Collectors.toList());
-        Comparator<Integer> comparing = Comparator.comparing((Integer num) -> num);
         //先正序，再反转集合
-        list.sort(Comparator.comparing((Integer num) -> num).reversed());
+        list.sort(Comparator.comparingInt(Integer::intValue).reversed());
         list.forEach(num -> System.out.println(num));
     }
 
@@ -65,7 +96,7 @@ public class ListNewUsageTest {
      * 遍历Stream中的所有元素，sum的值就是所有元素的和。
      */
     @Test
-    public void reduceListTest() {
+    public void test5() {
         int number = Stream.of(30, 20, 10, 29, 35).reduce(0, (sum, y) -> sum + y);
         System.out.println("number = " + number);
     }
@@ -75,31 +106,146 @@ public class ListNewUsageTest {
      * 累乘
      */
     @Test
-    public void reduceListTest2() {
-        int number = Stream.of(2,2,2,2,2).reduce(1, (multiply, y) -> multiply * y);
+    public void test6() {
+        int number = Stream.of(2, 2, 2, 2, 2).reduce(1, (multiply, y) -> multiply * y);
         System.out.println("number = " + number);
     }
 
-
+    /**
+     * 筛选出水果重量超过20的元素
+     */
     @Test
-    public void maxOrMinTest(){
-        Food banana = new Food(1001,"banana",100);
-        Food tomato = new Food(1002,"tomato",88);
-        Food apple = new Food(1003,"apple",66);
-        Food pear = new Food(1004,"pear",120);
+    public void test7() {
+        foodList.stream().filter(food -> food.getWeight() >= 20D).forEach(food -> System.out.println("food = " + JSONObject.toJSONString(food)));
+    }
 
-        List<Food> foodList = Stream.of(banana,tomato,apple,pear).collect(Collectors.toList());
+    /**
+     * 模糊匹配食物信息
+     */
+    @Test
+    public void test17() {
+        String keyword = "ba";
+        foodList.stream().filter(food -> food.getName().contains(keyword)).forEach(food -> System.out.println("food = " + JSONObject.toJSONString(food)));
+    }
 
+    /**
+     * 根据weight倒序集合信息
+     */
+    @Test
+    public void test8() {
+        foodList.stream().sorted((f1, f2) -> (int) (f2.getWeight() - f1.getWeight())).forEach(food -> System.out.println("food = " + JSONObject.toJSONString(food)));
+    }
+
+    /**
+     * 打印集合信息
+     */
+    @Test
+    public void test9() {
+        foodList.stream().forEach(food -> System.out.println("food = " + JSONObject.toJSONString(food)));
+    }
+
+    /**
+     * jdk 8 流式编程 ，让你代码更优雅
+     */
+    @Test
+    public void test10() {
+        //jdk8以前写法
+        List<Integer> numList = new ArrayList<>();
+        numList.add(1);
+        numList.add(2);
+        numList.add(3);
+        numList.add(4);
+        numList.add(5);
+        //打印
+        for (Integer num : numList) {
+            System.out.println("num = " + num);
+        }
+
+        //jdk8之后优雅写法
+        Stream.of(1, 2, 3, 4, 5).forEach(System.out::println);
+    }
+
+    /**
+     * flatMap
+     */
+    @Test
+    public void test11() {
+        collectFoodList.stream().flatMap(foodList -> foodList.stream()).collect(Collectors.toList()).forEach(food -> System.out.println("food = " + JSONObject.toJSONString(food)));
+    }
+
+    /**
+     * anyMatch：在判断条件里，只有有一个元素存在名字为banana的，则返回true，否则false，适用判断集合是否包含某些内容；
+     */
+    @Test
+    public void test12() {
+        boolean isExist = foodList.stream().anyMatch(food -> food.getName().equals("banana"));
+        System.out.println("isExist = " + isExist);
+    }
+
+    /**
+     * allMatch：在判断条件里，必须所有元素都包含banana的，才返回true；
+     */
+    @Test
+    public void test13() {
+        boolean isExist = foodList.stream().allMatch(food -> food.getName().equals("banana"));
+        System.out.println("isExist = " + isExist);
+    }
+
+    /**
+     * noneMatch：与allMatch作用相反，不包含这些内容
+     */
+    @Test
+    public void test14() {
+        boolean isExist = foodList.stream().noneMatch(food -> food.getName().equals("banana"));
+        System.out.println("isExist = " + isExist);
+    }
+
+    /**
+     * 集合聚合操作，针对Double类型字段
+     */
+    @Test
+    public void test15() {
+        DoubleSummaryStatistics ds = foodList.stream().mapToDouble(food -> food.getWeight()).summaryStatistics();
+        //聚合总记录数
+        double count = ds.getCount();
+        System.out.println("count = " + count);
+        //最重的水果
+        double max = ds.getMax();
+        System.out.println("max = " + max);
+        //最轻的水果
+        double min = ds.getMin();
+        System.out.println("min = " + min);
+        //水果平均值
+        double avg = ds.getAverage();
+        System.out.println("avg = " + avg);
+        //水果总重量
+        double sum = ds.getSum();
+        System.out.println("sum = " + sum);
+        System.out.println("ds = " + ds.toString());
+    }
+
+
+    /**
+     * 将实体集合-->转换成部分字段组合的对象然后进行聚合操作
+     * Optional
+     */
+    @Test
+    public void test16() {
         Optional<Food> maxFoodOptional = foodList.stream().max(Comparator.comparingInt(Food::getCount));
-        Optional<Food> minFoodOptional = foodList.stream().min(Comparator.comparingInt(Food::getId));
-        if(maxFoodOptional.isPresent()){
-            Food food = maxFoodOptional.get();
-            System.out.println("数量最多的食物 = " + food.getName()+"，"+food.getCount());
-        }
+        maxFoodOptional.ifPresent(food -> System.out.println("数量最多的食物 = " + food.getName() + "，" + food.getCount()));
 
-        if(minFoodOptional.isPresent()){
-            Food food = minFoodOptional.get();
-            System.out.println("编号最小的食物 = " + food.getName()+"，"+food.getCount());
-        }
+        Optional<Food> minFoodOptional = foodList.stream().min(Comparator.comparingDouble(Food::getWeight));
+        minFoodOptional.ifPresent(food -> System.out.println("重量最小的食物 = " + food.getName() + "，" + food.getWeight()));
+        //直接求食物中数量最多的最大值
+        OptionalInt maxCountFood = foodList.stream().mapToInt(Food::getCount).max();
+        System.out.println("食物中数量最大值 = " + maxCountFood.getAsInt());
+
+        //所有食物平均重量
+        OptionalDouble od = foodList.stream().mapToDouble(Food::getWeight).average();
+        System.out.println("所有食物平均重量 = " + od.getAsDouble());
+
+        //求所有水果总数量
+        int sumCount = foodList.stream().mapToInt(Food::getCount).sum();
+        System.out.println("所有水果总量 = " + sumCount);
     }
 }

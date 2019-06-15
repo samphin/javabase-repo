@@ -11,15 +11,16 @@ public class Food {
 
     private String name;
 
-    private double weight;
+    private double weight = 0D;
 
-    private int count;
+    private int count = 0;
 
     private String colour;
 
-    public Food(int id, String name, int count) {
+    public Food(int id, String name, int count,double weight) {
         this.id = id;
         this.name = name;
         this.count = count;
+        this.weight = weight;
     }
 }
