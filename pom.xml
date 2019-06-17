@@ -16,6 +16,7 @@
         <module>thread</module>
         <module>nio</module>
         <module>netty</module>
+        <module>mybatis</module>
     </modules>
 
     <name>javabase</name>
