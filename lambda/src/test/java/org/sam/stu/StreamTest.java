@@ -1,9 +1,11 @@
 package org.sam.stu;
 
+import com.alibaba.fastjson.JSONArray;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -82,6 +84,17 @@ public class StreamTest {
     public void test6() {
         int num = stream.mapToInt(Integer::intValue).reduce(1, (accumulate, n) -> accumulate * n);
         System.out.println("num = " + num);
+    }
+
+    /**
+     * 对数组进行排序
+     */
+    @Test
+    public void test7() {
+        Integer[] arr = {20, 19, 40, 60, 10, 8};
+        Arrays.sort(arr,Comparator.comparingInt(Integer::intValue));
+        //arr = Arrays.stream(arr).sorted(Comparator.comparingInt(Integer::intValue).reversed()).toArray(Integer[]::new);
+        System.out.println("arr = " + JSONArray.toJSONString(arr));
     }
 
 }

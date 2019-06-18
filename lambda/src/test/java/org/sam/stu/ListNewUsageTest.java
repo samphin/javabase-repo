@@ -267,4 +267,51 @@ public class ListNewUsageTest {
                 .collect(Collectors.toMap(food -> food.getCount(), food -> food.getName()));
         System.out.println("count:name = " + JSONObject.toJSONString(foodNameMap));
     }
+
+    /**
+     * 将列表数据按照cvs样式打印出来
+     */
+    @Test
+    public void test20(){
+        String result = foodList.stream().map(Food::getName).reduce((s,s1)->s+","+s1).get();
+        System.out.println("result = " + result);
+    }
+
+    /**
+     * 将list转换成map集合，针对自定义字段key：字段value
+     */
+    @Test
+    public void test21(){
+        Map<Integer,String> foodMap = foodList.stream().collect(Collectors.toMap(Food::getId,Food::getName));
+        System.out.println("foodMap = " + foodMap);
+    }
+
+    /**
+     * 针对test21中如果key有重复则抛异常，解决方案用重载的第三个参数解决
+     *
+     * // 使用旧的值，本例子中结果打印：{shanghai=3, shenzhen=1, beijing=2}
+     * (f, s) -> f
+     * // 使用新的值替换旧的值，打印：{shanghai=3, shenzhen=1, beijing=4}
+     * (f, s) -> s
+     * // 对新值和旧值进行处理，比如返回新值与旧值的和：{shanghai=3, shenzhen=1, beijing=6}
+     * (f, s) -> f + s
+     */
+    @Test
+    public void test22(){
+        Map<Integer,String> foodMap = foodList.stream().collect(Collectors.toMap(Food::getId,Food::getName,(f, s) -> f + s));
+        System.out.println("foodMap = " + foodMap);
+    }
+
+    /**
+     * mapping 根据重量对食物进行分组，并对食物名称用逗号隔开
+     * mapping 方法用于对Stream中元素的某个具体属性做进一步的映射处理，一般是和其他方法一起组合使用
+     * 按照水果重量分组，将组内食物名称用set集合装载，并显示
+     *
+     * 显示结果：{5.0=[pear], 20.0=[apple], 40.0=[potato], 10.0=[banana, banana2, banana3], 22.0=[tomato]}
+     */
+    @Test
+    public void test23(){
+        Map<Double, Set<String>> foodNameMap = foodList.stream().collect(Collectors.groupingBy(Food::getWeight,Collectors.mapping(Food::getName,Collectors.toSet())));
+        System.out.println("weight:FoodGroup = " + foodNameMap);
+    }
 }
