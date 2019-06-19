@@ -27,8 +27,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2019-6-17 23:04:30
  */
 @Api(value = "用户Controller")
-@RestController(value = "/users")
-@RequestMapping(consumes = "application/json")
+@RestController
+@RequestMapping(value = "/users")
 public class UserController {
 	
 	@Autowired
@@ -42,7 +42,7 @@ public class UserController {
 	 * @return
 	 */
 	@ApiOperation(value = "查询普通用户列表",notes = "查询普通用户列表")
-	@GetMapping(value = "query-user")
+	@GetMapping(value = "/query-user")
 	public ResponseResult queryList(){
 		List<SecUser> dataList = iSecUserService.queryAll();
 		return new ResponseResult().success(dataList);
@@ -53,7 +53,7 @@ public class UserController {
 	 * @return
 	 */
 	@ApiOperation(value = "1000w用户表",notes = "1000w用户表")
-	@GetMapping(value = "query-1000w-user")
+	@GetMapping(value = "/query-1000w-user")
 	public ResponseResult query1000WUserList(){
 
 		List<User1000w> user1000wList = user1000wService.queryAll();
@@ -103,7 +103,6 @@ public class UserController {
 	public ResponseResult update(@RequestBody @Valid User1000w user){
 		try {
 			user1000wService.updateByPrimaryKeySelective(user);
-
 			return new ResponseResult().success();
 		} catch (Exception e) {
 			return new ResponseResult().failure();

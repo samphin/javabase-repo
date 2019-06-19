@@ -30,7 +30,7 @@ import java.util.*;
 //import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 
 @Configuration
-@ComponentScan(basePackages = "org.sam.stu")
+@ComponentScan(basePackages = "org.sam.stu.controller")
 public class WebMvcConfig extends WebMvcConfigurationSupport {
     @Value("${server.port}")
     private String port;
@@ -72,9 +72,9 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         //允许哪些域访问
-        String[] allowedOrigins = {"http://localhost:9001", "http://localhost:9002", "http://localhost:9003"};
+        //String[] allowedOrigins = {"http://localhost:9001", "http://localhost:9002", "http://localhost:9003"};
         registry.addMapping("/*").
-                allowedOrigins(allowedOrigins).
+                //allowedOrigins(allowedOrigins).
                 allowCredentials(true).
                 allowedHeaders("Content-Type,X-Token").
                 allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS").maxAge(3600);//访问超时时间：一小时

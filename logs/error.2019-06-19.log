@@ -1,0 +1,16 @@
+2019-06-19 23:39:38,343 [http-nio-8001-exec-1] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:39:39,237 [http-nio-8001-exec-2] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:39:39,766 [http-nio-8001-exec-3] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:39:40,202 [http-nio-8001-exec-6] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:39:40,389 [http-nio-8001-exec-5] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:39:42,004 [http-nio-8001-exec-4] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:39:42,170 [http-nio-8001-exec-7] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:39:42,353 [http-nio-8001-exec-8] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:47:29,817 [http-nio-8001-exec-1] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:47:30,435 [http-nio-8001-exec-2] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:47:30,907 [http-nio-8001-exec-3] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:47:31,095 [http-nio-8001-exec-4] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:47:31,272 [http-nio-8001-exec-5] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:47:31,439 [http-nio-8001-exec-6] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:47:55,676 [http-nio-8001-exec-8] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2019-06-19 23:53:39,729 [http-nio-8001-exec-7] ERROR com.zaxxer.hikari.HikariConfig 950 - HikariPool-1 - jdbcUrl is required with driverClassName.
