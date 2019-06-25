@@ -259,21 +259,21 @@ public class ListNewUsageTest {
     }
 
     /**
-     * 根据数量-->与食物名称映射
+     * 将id,name抽取出来生成为map对象
      */
     @Test
     public void test19() {
         Map<Integer, String> foodNameMap = foodList.stream()
-                .collect(Collectors.toMap(food -> food.getCount(), food -> food.getName()));
-        System.out.println("count:name = " + JSONObject.toJSONString(foodNameMap));
+                .collect(Collectors.toMap(food -> food.getId(), food -> food.getName()));
+        System.out.println("id:name = " + foodNameMap);
     }
 
     /**
      * 将列表数据按照cvs样式打印出来
      */
     @Test
-    public void test20(){
-        String result = foodList.stream().map(Food::getName).reduce((s,s1)->s+","+s1).get();
+    public void test20() {
+        String result = foodList.stream().map(Food::getName).reduce((s, s1) -> s + "," + s1).get();
         System.out.println("result = " + result);
     }
 
@@ -281,14 +281,14 @@ public class ListNewUsageTest {
      * 将list转换成map集合，针对自定义字段key：字段value
      */
     @Test
-    public void test21(){
-        Map<Integer,String> foodMap = foodList.stream().collect(Collectors.toMap(Food::getId,Food::getName));
+    public void test21() {
+        Map<Integer, String> foodMap = foodList.stream().collect(Collectors.toMap(Food::getId, Food::getName));
         System.out.println("foodMap = " + foodMap);
     }
 
     /**
      * 针对test21中如果key有重复则抛异常，解决方案用重载的第三个参数解决
-     *
+     * <p>
      * // 使用旧的值，本例子中结果打印：{shanghai=3, shenzhen=1, beijing=2}
      * (f, s) -> f
      * // 使用新的值替换旧的值，打印：{shanghai=3, shenzhen=1, beijing=4}
@@ -297,8 +297,8 @@ public class ListNewUsageTest {
      * (f, s) -> f + s
      */
     @Test
-    public void test22(){
-        Map<Integer,String> foodMap = foodList.stream().collect(Collectors.toMap(Food::getId,Food::getName,(f, s) -> f + s));
+    public void test22() {
+        Map<Integer, String> foodMap = foodList.stream().collect(Collectors.toMap(Food::getId, Food::getName, (f, s) -> f + s));
         System.out.println("foodMap = " + foodMap);
     }
 
@@ -306,12 +306,50 @@ public class ListNewUsageTest {
      * mapping 根据重量对食物进行分组，并对食物名称用逗号隔开
      * mapping 方法用于对Stream中元素的某个具体属性做进一步的映射处理，一般是和其他方法一起组合使用
      * 按照水果重量分组，将组内食物名称用set集合装载，并显示
-     *
+     * <p>
      * 显示结果：{5.0=[pear], 20.0=[apple], 40.0=[potato], 10.0=[banana, banana2, banana3], 22.0=[tomato]}
      */
     @Test
-    public void test23(){
-        Map<Double, Set<String>> foodNameMap = foodList.stream().collect(Collectors.groupingBy(Food::getWeight,Collectors.mapping(Food::getName,Collectors.toSet())));
+    public void test23() {
+        Map<Double, Set<String>> foodNameMap = foodList.stream().collect(Collectors.groupingBy(Food::getWeight, Collectors.mapping(Food::getName, Collectors.toSet())));
         System.out.println("weight:FoodGroup = " + foodNameMap);
+    }
+
+    /**
+     * 取出匹配的第一个元素，直接返回
+     */
+    @Test
+    public void test24() {
+        Food foodInfo = foodList.stream().filter(food -> food.getId() == 1001).findFirst().orElse(null);
+        System.out.println("foodInfo = " + JSONObject.toJSONString(foodInfo));
+    }
+
+    /**
+     * 取出所有匹配关键字的数据集
+     */
+    @Test
+    public void test25() {
+        Food foodInfo = foodList.stream().filter(food -> food.getName().contains("ba")).findAny().orElse(null);
+        System.out.println("foodInfo = " + JSONObject.toJSONString(foodInfo));
+    }
+
+    /**
+     * 把查询出来的数据进行修改
+     */
+    @Test
+    public void test26() {
+        foodList.stream().filter(food -> food.getId() == 1001).findFirst().ifPresent(food -> {
+            food.setName("香蕉巴拉");
+            System.out.println("foodInfo = " + JSONObject.toJSONString(food));
+        });
+    }
+
+    /**
+     * 从foodList抽取所有水果名称并装成一个新集合
+     */
+    @Test
+    public void test27() {
+        List<String> foodNameList = foodList.stream().map(Food::getName).collect(Collectors.toList());
+        foodNameList.stream().forEach(name -> System.out.println("name = " + name));
     }
 }

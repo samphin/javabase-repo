@@ -14,6 +14,14 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.akarnokd</groupId>
+            <artifactId>rxjava3-observable</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+    </dependencies>
+
     <name>lambda</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>

@@ -14,14 +14,5 @@
         <module name="thread" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="design-model" target="1.8" />
-      <module name="javabase-repo" target="1.8" />
-      <module name="lambda" target="1.8" />
-      <module name="mybatis" target="1.8" />
-      <module name="netty" target="1.8" />
-      <module name="nio" target="1.8" />
-      <module name="thread" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
