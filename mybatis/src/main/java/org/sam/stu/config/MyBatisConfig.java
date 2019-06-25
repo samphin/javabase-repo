@@ -56,7 +56,7 @@ public class MyBatisConfig {
 		sessionFactoryBean.setTypeAliasesPackage("org.sam.stu.entity");
 		// 配置mapper的扫描，找到所有的mapper.xml映射文件
 		Resource[] resources = new PathMatchingResourcePatternResolver()
-				.getResources("classpath:mybatis/*.xml");
+				.getResources("classpath:mappers/*.xml");
 		sessionFactoryBean.setMapperLocations(resources);
 		// 加载全局的配置文件
 		sessionFactoryBean.setConfigLocation(

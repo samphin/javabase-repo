@@ -108,7 +108,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     public RequestMappingHandlerAdapter handlerAdapter() {
         RequestMappingHandlerAdapter adapter = new RequestMappingHandlerAdapter();
         // 自定义转换类型（数据）
-        adapter.setWebBindingInitializer(new DataBingding());
+        adapter.setWebBindingInitializer(new DataBinding());
         List<HttpMessageConverter<?>> list = new ArrayList<HttpMessageConverter<?>>();
         list.add(new ByteArrayHttpMessageConverter());
         StringHttpMessageConverter shm = new StringHttpMessageConverter();
