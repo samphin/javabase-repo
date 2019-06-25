@@ -2,13 +2,23 @@ server:
   #服务注册中心端口号
   port: 8001
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    #microservice是自定义数据库名称，可以改，其他保持不变，5.7默认采用SSL配置，如果没有配置，就将useSSL=false
-    url: jdbc:mysql://192.168.199.98:3306/microservice?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+  druid:
+    druidClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.199.98:3306/microservice?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
     username: root
     password: root
-    continueOnError: false   #有了错误是否继续运行
+    #最大连接数
+    maxActive: 30
+    #最小连接数
+    minIdle: 5
+    #获取连接的最大等待时间
+    maxWait: 10000
+    #解决mysql8小时的问题
+    validationgQuery: SELECT 'X'
+    #空闲连接的检查时间间隔
+    timeBetweenEvictionRunsMillis: 60000
+    #空闲连接最小空闲时间
+    minEvictableIdleTimeMillis: 300000
   redis:
     # Redis数据库索引(默认为0)
     database: 0
@@ -43,4 +53,3 @@ logging:
   file: D:/javabase-mybatis.log
 mybatis:
   config-location: classpath:mybatis-config.xml
-  mapper-locations: classpath:mybatis/*Mapper.xml
