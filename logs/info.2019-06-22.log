@@ -1,0 +1,99 @@
+2019-06-22 00:32:08,501 [main] DEBUG o.s.web.context.ContextLoader 288 - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-06-22 00:32:08,504 [main] INFO  o.s.web.context.ContextLoader 296 - Root WebApplicationContext: initialization completed in 2692 ms
+2019-06-22 00:32:08,573 [main] DEBUG o.s.web.filter.CorsFilter 241 - Filter 'corsFilter' configured for use
+2019-06-22 00:32:09,498 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping 350 - 10 mappings in 'requestMappingHandlerMapping'
+2019-06-22 00:32:09,659 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter 619 - ControllerAdvice beans: none
+2019-06-22 00:32:09,686 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping 139 - Patterns [/**] in 'defaultServletHandlerMapping'
+2019-06-22 00:32:09,721 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter 622 - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2019-06-22 00:32:09,739 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver 302 - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2019-06-22 00:32:09,898 [main] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration 108 - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-06-22 00:32:24,466 [http-nio-8001-exec-9] INFO  o.s.web.servlet.DispatcherServlet 524 - Initializing Servlet 'dispatcherServlet'
+2019-06-22 00:32:24,467 [http-nio-8001-exec-9] DEBUG o.s.web.servlet.DispatcherServlet 525 - Detected CommonsMultipartResolver
+2019-06-22 00:32:24,479 [http-nio-8001-exec-9] DEBUG o.s.web.servlet.DispatcherServlet 541 - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2019-06-22 00:32:24,479 [http-nio-8001-exec-9] INFO  o.s.web.servlet.DispatcherServlet 546 - Completed initialization in 12 ms
+2019-06-22 00:32:24,484 [http-nio-8001-exec-9] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/favicon.ico", parameters={}
+2019-06-22 00:32:24,551 [http-nio-8001-exec-9] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping 420 - Mapped to org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler@56b5c24d
+2019-06-22 00:32:24,563 [http-nio-8001-exec-9] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 404 NOT_FOUND
+2019-06-22 00:32:24,567 [http-nio-8001-exec-9] DEBUG o.s.web.servlet.DispatcherServlet 90 - "ERROR" dispatch for GET "/error", parameters={}
+2019-06-22 00:32:24,578 [http-nio-8001-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping 420 - Mapped to public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-06-22 00:32:24,611 [http-nio-8001-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 268 - Using 'text/html;charset=UTF-8;q=0.8', given [image/webp, image/apng, image/*, */*;q=0.8] and supported [text/html;charset=UTF-8]
+2019-06-22 00:32:24,613 [http-nio-8001-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 90 - Writing [{timestamp=Sat Jun 22 00:32:24 CST 2019, status=404, error=Not Found, message=/favicon.ico, path=/fa (truncated)...]
+2019-06-22 00:32:24,639 [http-nio-8001-exec-9] DEBUG o.s.web.servlet.DispatcherServlet 1126 - Exiting from "ERROR" dispatch, status 404
+2019-06-22 00:33:07,950 [http-nio-8001-exec-6] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/users/query-user", parameters={}
+2019-06-22 00:33:07,952 [http-nio-8001-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping 420 - Mapped to public org.sam.stu.vo.ResponseResult org.sam.stu.controller.UserController.queryList()
+2019-06-22 00:33:08,491 [http-nio-8001-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor 268 - Using 'text/html;charset=UTF-8', given [*/*] and supported [text/html;charset=UTF-8]
+2019-06-22 00:33:08,492 [http-nio-8001-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor 90 - Writing [org.sam.stu.vo.ResponseResult@e54f72b]
+2019-06-22 00:33:08,506 [http-nio-8001-exec-6] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 200 OK
+2019-06-22 00:33:48,059 [http-nio-8001-exec-8] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/swagger-ui.html", parameters={}
+2019-06-22 00:33:48,061 [http-nio-8001-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping 420 - Mapped to org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler@56b5c24d
+2019-06-22 00:33:48,072 [http-nio-8001-exec-8] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 304 NOT_MODIFIED
+2019-06-22 00:33:48,402 [http-nio-8001-exec-10] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/swagger-resources/configuration/ui", parameters={}
+2019-06-22 00:33:48,403 [http-nio-8001-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping 420 - Mapped to public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2019-06-22 00:33:48,412 [http-nio-8001-exec-6] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/webjars/springfox-swagger-ui/images/favicon-32x32.png", parameters={}
+2019-06-22 00:33:48,416 [http-nio-8001-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping 420 - Mapped to org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler@56b5c24d
+2019-06-22 00:33:48,420 [http-nio-8001-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 268 - Using 'text/html;charset=UTF-8;q=0.01', given [application/json, text/javascript, */*;q=0.01] and supported [text/html;charset=UTF-8]
+2019-06-22 00:33:48,421 [http-nio-8001-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 90 - Writing [springfox.documentation.swagger.web.UiConfiguration@35bb7ae8]
+2019-06-22 00:33:48,424 [http-nio-8001-exec-10] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 200 OK
+2019-06-22 00:33:48,425 [http-nio-8001-exec-6] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 200 OK
+2019-06-22 00:33:48,441 [http-nio-8001-exec-1] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/swagger-resources", parameters={}
+2019-06-22 00:33:48,444 [http-nio-8001-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping 420 - Mapped to public org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2019-06-22 00:33:48,447 [http-nio-8001-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 268 - Using 'text/html;charset=UTF-8;q=0.01', given [application/json, text/javascript, */*;q=0.01] and supported [text/html;charset=UTF-8]
+2019-06-22 00:33:48,448 [http-nio-8001-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 90 - Writing [[springfox.documentation.swagger.web.SwaggerResource@148a7c12]]
+2019-06-22 00:33:48,455 [http-nio-8001-exec-1] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 200 OK
+2019-06-22 00:33:48,471 [http-nio-8001-exec-2] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/v2/api-docs", parameters={}
+2019-06-22 00:33:48,598 [http-nio-8001-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 268 - Using 'text/html;charset=UTF-8', given [application/json;charset=utf-8, */*] and supported [text/html;charset=UTF-8]
+2019-06-22 00:33:48,599 [http-nio-8001-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 90 - Writing [springfox.documentation.spring.web.json.Json@73b9f437]
+2019-06-22 00:33:48,601 [http-nio-8001-exec-2] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 200 OK
+2019-06-22 00:33:48,710 [http-nio-8001-exec-3] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/swagger-resources/configuration/security", parameters={}
+2019-06-22 00:33:48,710 [http-nio-8001-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping 420 - Mapped to public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2019-06-22 00:33:48,714 [http-nio-8001-exec-3] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 268 - Using 'text/html;charset=UTF-8;q=0.01', given [application/json, text/javascript, */*;q=0.01] and supported [text/html;charset=UTF-8]
+2019-06-22 00:33:48,715 [http-nio-8001-exec-3] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 90 - Writing [springfox.documentation.swagger.web.SecurityConfiguration@7f7fcc77]
+2019-06-22 00:33:48,716 [http-nio-8001-exec-3] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 200 OK
+2019-06-22 00:33:54,237 [http-nio-8001-exec-5] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/users/query-user", parameters={}
+2019-06-22 00:33:54,238 [http-nio-8001-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping 420 - Mapped to public org.sam.stu.vo.ResponseResult org.sam.stu.controller.UserController.queryList()
+2019-06-22 00:33:54,251 [http-nio-8001-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor 268 - Using 'text/html;charset=UTF-8', given [*/*] and supported [text/html;charset=UTF-8]
+2019-06-22 00:33:54,251 [http-nio-8001-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor 90 - Writing [org.sam.stu.vo.ResponseResult@62bc03f0]
+2019-06-22 00:33:54,253 [http-nio-8001-exec-5] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 200 OK
+2019-06-22 13:39:05,729 [main] DEBUG o.s.web.context.ContextLoader 288 - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-06-22 13:39:05,734 [main] INFO  o.s.web.context.ContextLoader 296 - Root WebApplicationContext: initialization completed in 2927 ms
+2019-06-22 13:39:05,845 [main] DEBUG o.s.web.filter.CorsFilter 241 - Filter 'corsFilter' configured for use
+2019-06-22 13:39:07,510 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping 350 - 10 mappings in 'requestMappingHandlerMapping'
+2019-06-22 13:39:07,694 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter 619 - ControllerAdvice beans: none
+2019-06-22 13:39:07,737 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping 139 - Patterns [/**] in 'defaultServletHandlerMapping'
+2019-06-22 13:39:07,825 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter 622 - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2019-06-22 13:39:07,843 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver 302 - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2019-06-22 13:39:08,079 [main] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration 108 - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-06-22 13:39:28,153 [http-nio-8001-exec-1] INFO  o.s.web.servlet.DispatcherServlet 524 - Initializing Servlet 'dispatcherServlet'
+2019-06-22 13:39:28,153 [http-nio-8001-exec-1] DEBUG o.s.web.servlet.DispatcherServlet 525 - Detected CommonsMultipartResolver
+2019-06-22 13:39:28,166 [http-nio-8001-exec-1] DEBUG o.s.web.servlet.DispatcherServlet 541 - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2019-06-22 13:39:28,166 [http-nio-8001-exec-1] INFO  o.s.web.servlet.DispatcherServlet 546 - Completed initialization in 13 ms
+2019-06-22 13:39:28,178 [http-nio-8001-exec-1] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/swagger-ui.html", parameters={}
+2019-06-22 13:39:28,188 [http-nio-8001-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping 420 - Mapped to org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler@7ace5d54
+2019-06-22 13:39:28,207 [http-nio-8001-exec-1] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 304 NOT_MODIFIED
+2019-06-22 13:39:28,468 [http-nio-8001-exec-2] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/swagger-resources/configuration/ui", parameters={}
+2019-06-22 13:39:28,473 [http-nio-8001-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping 420 - Mapped to public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2019-06-22 13:39:28,497 [http-nio-8001-exec-3] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/webjars/springfox-swagger-ui/images/favicon-32x32.png", parameters={}
+2019-06-22 13:39:28,499 [http-nio-8001-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping 420 - Mapped to org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler@7ace5d54
+2019-06-22 13:39:28,519 [http-nio-8001-exec-3] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 200 OK
+2019-06-22 13:39:28,599 [http-nio-8001-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 268 - Using 'text/html;charset=UTF-8;q=0.01', given [application/json, text/javascript, */*;q=0.01] and supported [text/html;charset=UTF-8]
+2019-06-22 13:39:28,600 [http-nio-8001-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 90 - Writing [springfox.documentation.swagger.web.UiConfiguration@10e4f04]
+2019-06-22 13:39:28,622 [http-nio-8001-exec-2] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 200 OK
+2019-06-22 13:39:28,629 [http-nio-8001-exec-4] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/swagger-resources", parameters={}
+2019-06-22 13:39:28,630 [http-nio-8001-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping 420 - Mapped to public org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2019-06-22 13:39:28,640 [http-nio-8001-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 268 - Using 'text/html;charset=UTF-8;q=0.01', given [application/json, text/javascript, */*;q=0.01] and supported [text/html;charset=UTF-8]
+2019-06-22 13:39:28,640 [http-nio-8001-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 90 - Writing [[springfox.documentation.swagger.web.SwaggerResource@6e4a5174]]
+2019-06-22 13:39:28,646 [http-nio-8001-exec-4] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 200 OK
+2019-06-22 13:39:28,659 [http-nio-8001-exec-5] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/v2/api-docs", parameters={}
+2019-06-22 13:39:28,798 [http-nio-8001-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 268 - Using 'text/html;charset=UTF-8', given [application/json;charset=utf-8, */*] and supported [text/html;charset=UTF-8]
+2019-06-22 13:39:28,799 [http-nio-8001-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 90 - Writing [springfox.documentation.spring.web.json.Json@51406cc]
+2019-06-22 13:39:28,802 [http-nio-8001-exec-5] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 200 OK
+2019-06-22 13:39:28,909 [http-nio-8001-exec-6] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/swagger-resources/configuration/security", parameters={}
+2019-06-22 13:39:28,910 [http-nio-8001-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping 420 - Mapped to public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2019-06-22 13:39:28,914 [http-nio-8001-exec-6] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 268 - Using 'text/html;charset=UTF-8;q=0.01', given [application/json, text/javascript, */*;q=0.01] and supported [text/html;charset=UTF-8]
+2019-06-22 13:39:28,914 [http-nio-8001-exec-6] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor 90 - Writing [springfox.documentation.swagger.web.SecurityConfiguration@62cba077]
+2019-06-22 13:39:28,916 [http-nio-8001-exec-6] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 200 OK
+2019-06-22 13:43:41,379 [http-nio-8001-exec-4] DEBUG o.s.web.servlet.DispatcherServlet 90 - GET "/users/query-user", parameters={}
+2019-06-22 13:43:41,381 [http-nio-8001-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping 420 - Mapped to public org.sam.stu.vo.ResponseResult org.sam.stu.controller.UserController.queryList()
+2019-06-22 13:44:59,895 [http-nio-8001-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor 268 - Using 'text/html;charset=UTF-8', given [*/*] and supported [text/html;charset=UTF-8]
+2019-06-22 13:44:59,895 [http-nio-8001-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor 90 - Writing [org.sam.stu.vo.ResponseResult@740243bb]
+2019-06-22 13:44:59,903 [http-nio-8001-exec-4] DEBUG o.s.web.servlet.DispatcherServlet 1130 - Completed 200 OK
