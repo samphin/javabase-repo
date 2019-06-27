@@ -53,3 +53,9 @@ logging:
   file: D:/javabase-mybatis.log
 mybatis:
   config-location: classpath:mybatis-config.xml
+#分页插件配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count
