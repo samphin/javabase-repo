@@ -48,16 +48,18 @@
 			<property name="useActualColumnNames" value="false" />
 		</table>
 
-		<table tableName="t_order" domainObjectName="Orders"
+		<table tableName="orders_info" domainObjectName="OrdersInfo"
 			   enableCountByExample="false" enableDeleteByExample="false"
 			   enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />
 		</table>
 
-		<table tableName="order_product" domainObjectName="OrderProduct"
+		<table tableName="order_item" domainObjectName="OrderItem"
 			   enableCountByExample="false" enableDeleteByExample="false"
 			   enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />
 		</table>
+
+
 	</context>
 </generatorConfiguration>

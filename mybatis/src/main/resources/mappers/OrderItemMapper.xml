@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.sam.stu.mapper.OrderItemMapper" >
+  <resultMap id="BaseResultMap" type="org.sam.stu.entity.OrderItem" >
+    <id column="item_id" property="itemId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="order_status" property="orderStatus" jdbcType="TINYINT" />
+    <result column="format_id" property="formatId" jdbcType="BIGINT" />
+    <result column="buyer_id" property="buyerId" jdbcType="BIGINT" />
+    <result column="buyer_status" property="buyerStatus" jdbcType="TINYINT" />
+    <result column="buyer_finish_time" property="buyerFinishTime" jdbcType="TIMESTAMP" />
+    <result column="delivery_id" property="deliveryId" jdbcType="BIGINT" />
+    <result column="delivery_type" property="deliveryType" jdbcType="TINYINT" />
+    <result column="delivery_status" property="deliveryStatus" jdbcType="TINYINT" />
+    <result column="delivery_money" property="deliveryMoney" jdbcType="DECIMAL" />
+    <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
+    <result column="seller_status" property="sellerStatus" jdbcType="TINYINT" />
+    <result column="seller_finish_time" property="sellerFinishTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="goods_number_old" property="goodsNumberOld" jdbcType="DECIMAL" />
+    <result column="goods_number" property="goodsNumber" jdbcType="DECIMAL" />
+    <result column="goods_price" property="goodsPrice" jdbcType="DECIMAL" />
+    <result column="goods_amount" property="goodsAmount" jdbcType="DECIMAL" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <insert id="insert" parameterType="org.sam.stu.entity.OrderItem" >
+    insert into order_item (item_id, order_id, order_number, 
+      order_status, format_id, buyer_id, 
+      buyer_status, buyer_finish_time, delivery_id, 
+      delivery_type, delivery_status, delivery_money, 
+      seller_id, seller_status, seller_finish_time, 
+      remark, goods_number_old, goods_number, 
+      goods_price, goods_amount, create_time
+      )
+    values (#{itemId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{orderNumber,jdbcType=VARCHAR}, 
+      #{orderStatus,jdbcType=TINYINT}, #{formatId,jdbcType=BIGINT}, #{buyerId,jdbcType=BIGINT}, 
+      #{buyerStatus,jdbcType=TINYINT}, #{buyerFinishTime,jdbcType=TIMESTAMP}, #{deliveryId,jdbcType=BIGINT}, 
+      #{deliveryType,jdbcType=TINYINT}, #{deliveryStatus,jdbcType=TINYINT}, #{deliveryMoney,jdbcType=DECIMAL}, 
+      #{sellerId,jdbcType=BIGINT}, #{sellerStatus,jdbcType=TINYINT}, #{sellerFinishTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{goodsNumberOld,jdbcType=DECIMAL}, #{goodsNumber,jdbcType=DECIMAL}, 
+      #{goodsPrice,jdbcType=DECIMAL}, #{goodsAmount,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.sam.stu.entity.OrderItem" >
+    insert into order_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="formatId != null" >
+        format_id,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="buyerStatus != null" >
+        buyer_status,
+      </if>
+      <if test="buyerFinishTime != null" >
+        buyer_finish_time,
+      </if>
+      <if test="deliveryId != null" >
+        delivery_id,
+      </if>
+      <if test="deliveryType != null" >
+        delivery_type,
+      </if>
+      <if test="deliveryStatus != null" >
+        delivery_status,
+      </if>
+      <if test="deliveryMoney != null" >
+        delivery_money,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="sellerStatus != null" >
+        seller_status,
+      </if>
+      <if test="sellerFinishTime != null" >
+        seller_finish_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="goodsNumberOld != null" >
+        goods_number_old,
+      </if>
+      <if test="goodsNumber != null" >
+        goods_number,
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price,
+      </if>
+      <if test="goodsAmount != null" >
+        goods_amount,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemId != null" >
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="formatId != null" >
+        #{formatId,jdbcType=BIGINT},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="buyerStatus != null" >
+        #{buyerStatus,jdbcType=TINYINT},
+      </if>
+      <if test="buyerFinishTime != null" >
+        #{buyerFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryId != null" >
+        #{deliveryId,jdbcType=BIGINT},
+      </if>
+      <if test="deliveryType != null" >
+        #{deliveryType,jdbcType=TINYINT},
+      </if>
+      <if test="deliveryStatus != null" >
+        #{deliveryStatus,jdbcType=TINYINT},
+      </if>
+      <if test="deliveryMoney != null" >
+        #{deliveryMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerStatus != null" >
+        #{sellerStatus,jdbcType=TINYINT},
+      </if>
+      <if test="sellerFinishTime != null" >
+        #{sellerFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNumberOld != null" >
+        #{goodsNumberOld,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsNumber != null" >
+        #{goodsNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsPrice != null" >
+        #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsAmount != null" >
+        #{goodsAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>
