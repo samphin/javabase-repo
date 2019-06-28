@@ -350,6 +350,6 @@ public class ListNewUsageTest {
     @Test
     public void test27() {
         List<String> foodNameList = foodList.stream().map(Food::getName).collect(Collectors.toList());
-        foodNameList.stream().forEach(name -> System.out.println("name = " + name));
+        foodNameList.stream().forEach(System.out::println);
     }
 }

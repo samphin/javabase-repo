@@ -1,13 +1,13 @@
 package org.sam.stu;
 
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import io.reactivex.observable.Observable;
 import org.junit.Before;
 import org.junit.Test;
 import org.sam.stu.po.Food;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -43,7 +43,7 @@ public class ObservableTest {
         Observable<JSONArray> observable = Observable.zip(
                 getFoodList(1001),
                 getFoodList(1002),
-                (food1,food2)->{
+                (food1, food2) -> {
                     JSONArray jsonArray = new JSONArray();
                     jsonArray.add(food1);
                     jsonArray.add(food2);
@@ -53,13 +53,35 @@ public class ObservableTest {
         System.out.println("blockingSingle = " + observable.blockingSingle().toJSONString());
         System.out.println("blockingFirst = " + observable.blockingFirst().toJSONString());
         System.out.println("blockingLast = " + observable.blockingLast().toJSONString());
-        observable.blockingIterable().iterator().forEachRemaining(remain->{
+        observable.blockingIterable().iterator().forEachRemaining(remain -> {
             System.out.println("remain.toJSONString() = " + remain.toJSONString());
         });
     }
 
-    public Observable<Food> getFoodList(int id){
-        Food foodInfo = foodList.stream().filter(food->food.getId()==id).findFirst().get();
+    public Observable<Food> getFoodList(int id) {
+        Food foodInfo = foodList.stream().filter(food -> food.getId() == id).findFirst().get();
         return Observable.just(foodInfo);
+    }
+
+    /**
+     * 定时器设计
+     */
+    @Test
+    public void test2() {
+        long start = System.currentTimeMillis();
+        System.out.println("定时开始");
+        Observable<Long> observable = Observable.timer(10, TimeUnit.SECONDS);
+        observable.blockingFirst();
+        long end = System.currentTimeMillis();
+        System.out.println("定时结束，总耗时：" + (end - start));
+    }
+
+    /**
+     * 依次发射 5、6、7
+     */
+    @Test
+    public void test3(){
+        Observable<Integer> observable = Observable.range(5, 3);
+        observable.blockingIterable().forEach(System.out::println);
     }
 }
