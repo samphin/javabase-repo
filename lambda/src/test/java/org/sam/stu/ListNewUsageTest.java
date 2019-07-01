@@ -119,12 +119,21 @@ public class ListNewUsageTest {
     }
 
     /**
-     * 根据weight倒序集合信息
+     * 根据weight倒序集合信息（方法一）
      */
     @Test
     public void test8() {
         foodList.stream().sorted((f1, f2) -> (int) (f2.getWeight() - f1.getWeight())).forEach(food -> System.out.println("food = " + JSONObject.toJSONString(food)));
     }
+
+    /**
+     * 根据weight倒序集合信息（方法二）
+     */
+    @Test
+    public void test8_1() {
+        foodList.stream().sorted(Comparator.comparingDouble(Food::getWeight).reversed()).forEach(food -> System.out.println("food = " + JSONObject.toJSONString(food)));
+    }
+
 
     /**
      * 打印集合信息

@@ -24,4 +24,6 @@ public class Orders {
 
     private Date orderTime;
 
+    private String userId;
+
 }

@@ -24,6 +24,11 @@
     <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
     <result column="LAST_UPDATE_USER_ID" property="lastUpdateUserId" jdbcType="VARCHAR" />
     <result column="LAST_UPDATE_TIME" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <!--关联查询订单信息-->
+    <collection property="orders" ofType="org.sam.stu.entity.Products" column="user_id">
+
+
+    </collection>
   </resultMap>
   <sql id="Base_Column_List" >
     USER_ID, USER_NAME, PASSWORD, REAL_NAME, SEX, AGE, ID_CARD, BIRTHDAY, PLACE, TELEPHONE, 

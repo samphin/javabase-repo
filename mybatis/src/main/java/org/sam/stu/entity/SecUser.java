@@ -3,54 +3,56 @@ package org.sam.stu.entity;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
-public class SecUser implements Serializable{
-	
-	private String userId;
+public class SecUser implements Serializable {
 
-    private String userName;
+  private String userId;
 
-    private String password;
+  private String userName;
 
-    private String realName;
+  private String password;
 
-    private Long sex;
+  private String realName;
 
-    private Short age;
+  private Long sex;
 
-    private String idCard;
+  private Short age;
 
-    private Date birthday;
+  private String idCard;
 
-    private String place;
+  private Date birthday;
 
-    private String telephone;
+  private String place;
 
-    private String email;
+  private String telephone;
 
-    private String address;
+  private String email;
 
-    private Integer isSuperAdmin;
+  private String address;
 
-    private Integer status;
+  private Integer isSuperAdmin;
 
-    private Date enabledTime;
+  private Integer status;
 
-    private Date invalidTime;
+  private Date enabledTime;
 
-    private String credentialsSalt;
+  private Date invalidTime;
 
-    private String remark;
+  private String credentialsSalt;
 
-    private String createUserId;
+  private String remark;
 
-    private Date createTime;
+  private String createUserId;
 
-    private String lastUpdateUserId;
+  private Date createTime;
 
-    private Date lastUpdateTime;
+  private String lastUpdateUserId;
 
-	private static final long serialVersionUID = 1L;
+  private Date lastUpdateTime;
+
+  List<Orders> orders = new ArrayList<>();
 }
