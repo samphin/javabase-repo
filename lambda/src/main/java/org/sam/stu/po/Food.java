@@ -22,6 +22,9 @@ public class Food {
     @FoodAnnotation(name = "食物颜色", classType = Food.class, description = "食物颜色")
     private String colour;
 
+    @FoodAnnotation(name = "食物颜色描述", classType = Food.class, description = "食物颜色描述")
+    private String colourDecription;
+
     public Food() {
     }
 
@@ -38,5 +41,14 @@ public class Food {
         this.count = count;
         this.weight = weight;
         this.colour = colour;
+    }
+
+    public Food(int id, String name, int count, double weight, String colour,String colourDecription) {
+        this.id = id;
+        this.name = name;
+        this.count = count;
+        this.weight = weight;
+        this.colour = colour;
+        this.colourDecription = colourDecription;
     }
 }

@@ -29,13 +29,13 @@ public class ListNewUsageTest {
     public void init() {
         //初始化集合元素
         foodList = Stream.of(
-                new Food(1001, "banana", 20, 10D,"yellow"),
-                new Food(1002, "tomato", 30, 22D,"yellow"),
-                new Food(1003, "potato", 22, 40D,"yellow"),
-                new Food(1004, "apple", 42, 20D,"red"),
-                new Food(1005, "pear", 10, 5D,"yellowLight"),
-                new Food(1006, "banana2", 21, 10D,"yellow"),
-                new Food(1007, "banana3", 23, 10D,"yellow")
+                new Food(1001, "banana", 20, 10D,"yellow","黄色"),
+                new Food(1002, "tomato", 30, 22D,"yellow","黄色"),
+                new Food(1003, "potato", 22, 40D,"yellow","黄色"),
+                new Food(1004, "apple", 42, 20D,"red","红色"),
+                new Food(1005, "pear", 10, 5D,"yellowLight","莹黄色"),
+                new Food(1006, "banana2", 21, 10D,"yellow","黄色"),
+                new Food(1007, "banana3", 23, 10D,"yellow","黄色")
         ).collect(Collectors.toList());
 
         foodList1 = Stream.of(
@@ -395,6 +395,15 @@ public class ListNewUsageTest {
     @Test
     public void test28(){
         Map<String, List<Food>> colourGroupMap = foodList.stream().collect(Collectors.groupingBy(Food::getColour));
+        System.out.println("colourGroupMap = " + JSONObject.toJSONString(colourGroupMap));
+    }
+
+    /**
+     * 根据颜色描述分组
+     */
+    @Test
+    public void test29(){
+        Map<String, List<Food>> colourGroupMap = foodList.stream().collect(Collectors.groupingBy(Food::getColourDecription));
         System.out.println("colourGroupMap = " + JSONObject.toJSONString(colourGroupMap));
     }
 }
