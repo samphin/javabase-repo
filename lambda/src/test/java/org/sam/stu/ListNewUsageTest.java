@@ -29,13 +29,13 @@ public class ListNewUsageTest {
     public void init() {
         //初始化集合元素
         foodList = Stream.of(
-                new Food(1001, "banana", 20, 10D),
-                new Food(1002, "tomato", 30, 22D),
-                new Food(1003, "potato", 22, 40D),
-                new Food(1004, "apple", 42, 20D),
-                new Food(1005, "pear", 10, 5D),
-                new Food(1006, "banana2", 21, 10D),
-                new Food(1007, "banana3", 23, 10D)
+                new Food(1001, "banana", 20, 10D,"yellow"),
+                new Food(1002, "tomato", 30, 22D,"yellow"),
+                new Food(1003, "potato", 22, 40D,"yellow"),
+                new Food(1004, "apple", 42, 20D,"red"),
+                new Food(1005, "pear", 10, 5D,"yellowLight"),
+                new Food(1006, "banana2", 21, 10D,"yellow"),
+                new Food(1007, "banana3", 23, 10D,"yellow")
         ).collect(Collectors.toList());
 
         foodList1 = Stream.of(
@@ -132,6 +132,24 @@ public class ListNewUsageTest {
     @Test
     public void test8_1() {
         foodList.stream().sorted(Comparator.comparingDouble(Food::getWeight).reversed()).forEach(food -> System.out.println("food = " + JSONObject.toJSONString(food)));
+    }
+
+    /**
+     * 根据weight倒序集合信息（方法三）
+     */
+    @Test
+    public void test8_2() {
+        foodList.sort((f1,f2)->(int)(f2.getWeight()-f1.getWeight()));
+        foodList.forEach(food -> System.out.println("food = " + JSONObject.toJSONString(food)));
+    }
+
+    /**
+     * 根据weight倒序集合信息（方法四）
+     */
+    @Test
+    public void test8_3() {
+        foodList.sort(Comparator.comparingDouble(Food::getWeight).reversed());
+        foodList.forEach(food -> System.out.println("food = " + JSONObject.toJSONString(food)));
     }
 
 
@@ -262,7 +280,6 @@ public class ListNewUsageTest {
      */
     @Test
     public void test18() {
-
         Map<Double, List<Food>> foodGroup = foodList.stream().collect(Collectors.groupingBy(food -> food.getWeight()));
         System.out.println("weight:FoodGroup = " + JSONObject.toJSONString(foodGroup));
     }
@@ -273,7 +290,17 @@ public class ListNewUsageTest {
     @Test
     public void test19() {
         Map<Integer, String> foodNameMap = foodList.stream()
-                .collect(Collectors.toMap(food -> food.getId(), food -> food.getName()));
+                .collect(Collectors.toMap(Food::getId, Food::getName));
+        System.out.println("id:name = " + foodNameMap);
+    }
+
+    /**
+     * 将id,name抽取出来生成为map对象(等同于test19，这种方式适用于非JavaBean，例如：JSONObject,Map对象等，通过get取值)
+     */
+    @Test
+    public void test19_1() {
+        Map<Integer, String> foodNameMap = foodList.stream()
+            .collect(Collectors.toMap(food->food.getId(),food->food.getName()));
         System.out.println("id:name = " + foodNameMap);
     }
 
@@ -360,5 +387,14 @@ public class ListNewUsageTest {
     public void test27() {
         List<String> foodNameList = foodList.stream().map(Food::getName).collect(Collectors.toList());
         foodNameList.stream().forEach(System.out::println);
+    }
+
+    /**
+     * 根据颜色分组
+     */
+    @Test
+    public void test28(){
+        Map<String, List<Food>> colourGroupMap = foodList.stream().collect(Collectors.groupingBy(Food::getColour));
+        System.out.println("colourGroupMap = " + JSONObject.toJSONString(colourGroupMap));
     }
 }

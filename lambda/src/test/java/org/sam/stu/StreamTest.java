@@ -4,10 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -95,6 +92,17 @@ public class StreamTest {
         Arrays.sort(arr,Comparator.comparingInt(Integer::intValue));
         //arr = Arrays.stream(arr).sorted(Comparator.comparingInt(Integer::intValue).reversed()).toArray(Integer[]::new);
         System.out.println("arr = " + JSONArray.toJSONString(arr));
+    }
+
+    /**
+     * 将list转换成set
+     */
+    @Test
+    public void test8(){
+        List<String> relation = new ArrayList<>(1);
+        relation.add("abc");
+        Set<String> set = relation.stream().collect(Collectors.toSet());
+        System.out.println("set = " + JSONArray.toJSONString(set));
     }
 
 }
