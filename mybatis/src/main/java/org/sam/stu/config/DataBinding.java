@@ -1,13 +1,12 @@
 package org.sam.stu.config;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.support.WebBindingInitializer;
-import org.springframework.web.context.request.WebRequest;
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 自定义日期、时间的类型绑定

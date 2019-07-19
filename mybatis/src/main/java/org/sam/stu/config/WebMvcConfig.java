@@ -74,10 +74,10 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         //允许哪些域访问
         //String[] allowedOrigins = {"http://localhost:9001", "http://localhost:9002", "http://localhost:9003"};
         registry.addMapping("/*").
-                //allowedOrigins(allowedOrigins).
+            //allowedOrigins(allowedOrigins).
                 allowCredentials(true).
-                allowedHeaders("Content-Type,X-Token").
-                allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS").maxAge(3600);//访问超时时间：一小时
+            allowedHeaders("Content-Type,X-Token").
+            allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS").maxAge(3600);//访问超时时间：一小时
     }
 
     private CorsConfiguration addcorsConfig() {
