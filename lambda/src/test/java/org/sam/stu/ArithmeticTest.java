@@ -195,5 +195,16 @@ public class ArithmeticTest {
 
         return maxOptional.get();*/
     }
+
+
+
+    /**
+     * 计算字符串中是否包含值
+     */
+    @Test
+    public void test6() {
+        String s = "abcabcbb";
+        System.out.println("s = " + s.contains("abc"));
+    }
     
 }

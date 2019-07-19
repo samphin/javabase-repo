@@ -29,17 +29,17 @@ public class ListNewUsageTest {
     public void init() {
         //初始化集合元素
         foodList = Stream.of(
-                new Food(1001, "banana", 20, 10D,"yellow","黄色"),
-                new Food(1002, "tomato", 30, 22D,"yellow","黄色"),
-                new Food(1003, "potato", 22, 40D,"yellow","黄色"),
-                new Food(1004, "apple", 42, 20D,"red","红色"),
-                new Food(1005, "pear", 10, 5D,"yellowLight","莹黄色"),
-                new Food(1006, "banana2", 21, 10D,"yellow","黄色"),
-                new Food(1007, "banana3", 23, 10D,"yellow","黄色")
+            new Food(1001, "banana", 20, 10D, "yellow", "黄色"),
+            new Food(1002, "tomato", 30, 22D, "yellow", "黄色"),
+            new Food(1003, "potato", 22, 40D, "yellow", "黄色"),
+            new Food(1004, "apple", 42, 20D, "red", "红色"),
+            new Food(1005, "pear", 10, 5D, "yellowLight", "莹黄色"),
+            new Food(1006, "banana2", 21, 10D, "yellow", "黄色"),
+            new Food(1007, "banana3", 23, 10D, "yellow", "黄色")
         ).collect(Collectors.toList());
 
         foodList1 = Stream.of(
-                new Food(1008, "lemon", 60, 30D)
+            new Food(1008, "lemon", 60, 30D)
         ).collect(Collectors.toList());
 
         foodList2 = Stream.of(new Food(1009, "pitaya", 33, 18D)
@@ -139,7 +139,7 @@ public class ListNewUsageTest {
      */
     @Test
     public void test8_2() {
-        foodList.sort((f1,f2)->(int)(f2.getWeight()-f1.getWeight()));
+        foodList.sort((f1, f2) -> (int) (f2.getWeight() - f1.getWeight()));
         foodList.forEach(food -> System.out.println("food = " + JSONObject.toJSONString(food)));
     }
 
@@ -290,7 +290,7 @@ public class ListNewUsageTest {
     @Test
     public void test19() {
         Map<Integer, String> foodNameMap = foodList.stream()
-                .collect(Collectors.toMap(Food::getId, Food::getName));
+            .collect(Collectors.toMap(Food::getId, Food::getName));
         System.out.println("id:name = " + foodNameMap);
     }
 
@@ -300,21 +300,23 @@ public class ListNewUsageTest {
     @Test
     public void test19_1() {
         Map<Integer, String> foodNameMap = foodList.stream()
-            .collect(Collectors.toMap(food->food.getId(),food->food.getName()));
+            .collect(Collectors.toMap(food -> food.getId(), food -> food.getName()));
         System.out.println("id:name = " + foodNameMap);
     }
 
     /**
-     * 将列表数据按照cvs样式打印出来
+     * 将列表数据按照cvs样式打印出来，适用于将集合中某些字段转换成指定格式拼接字符串
+     * 示例：将食物名称取出来，按照逗号形式拼接，或者按分号拼接均可
      */
     @Test
     public void test20() {
-        String result = foodList.stream().map(Food::getName).reduce((s, s1) -> s + "," + s1).get();
+        String result = foodList.stream().map(Food::getName).reduce((f1, f2) -> f1 + "," + f2).get();
         System.out.println("result = " + result);
     }
 
     /**
-     * 将list转换成map集合，针对自定义字段key：字段value
+     * 将list转换成map集合，针对自定义字段key：字段value，注意事项，当转换map时，作为key的字段有重复时，会抛异常【java.lang.IllegalStateException: Duplicate key banana】
+     * 解决方法，参照test22，对key进行策略性处理
      */
     @Test
     public void test21() {
@@ -334,7 +336,7 @@ public class ListNewUsageTest {
      */
     @Test
     public void test22() {
-        Map<Integer, String> foodMap = foodList.stream().collect(Collectors.toMap(Food::getId, Food::getName, (f, s) -> f + s));
+        Map<Integer, String> foodMap = foodList.stream().collect(Collectors.toMap(Food::getId, Food::getName, (f, s) -> f));
         System.out.println("foodMap = " + foodMap);
     }
 
@@ -393,7 +395,7 @@ public class ListNewUsageTest {
      * 根据颜色分组
      */
     @Test
-    public void test28(){
+    public void test28() {
         Map<String, List<Food>> colourGroupMap = foodList.stream().collect(Collectors.groupingBy(Food::getColour));
         System.out.println("colourGroupMap = " + JSONObject.toJSONString(colourGroupMap));
     }
@@ -402,8 +404,62 @@ public class ListNewUsageTest {
      * 根据颜色描述分组
      */
     @Test
-    public void test29(){
+    public void test29() {
         Map<String, List<Food>> colourGroupMap = foodList.stream().collect(Collectors.groupingBy(Food::getColourDecription));
         System.out.println("colourGroupMap = " + JSONObject.toJSONString(colourGroupMap));
+    }
+
+    /**
+     * 对比流式编程与普通循环遍历集合性能差异
+     */
+    @Test
+    public void test30() {
+        long startTime = System.currentTimeMillis();
+        List<Food> foods = generatorFoodList();
+        //求出食物所有颜色
+        Set<String> colorSet = new HashSet<>();
+        /*//求出食物总数
+        int totalCount = foods.stream().mapToInt(Food::getCount).sum();
+        //求出食物总重量
+        double totalWeight = foods.stream().mapToDouble(Food::getWeight).sum();
+
+
+        foods.forEach(food->{
+            colorSet.add(food.getName());
+        });*/
+
+        int totalCount = 0;
+        double totalWeight = 0D;
+        for (Food food : foods) {
+            totalCount += food.getCount();
+            totalWeight += food.getWeight();
+            colorSet.add(food.getName());
+        }
+
+        System.out.println("食物总数 = " + totalCount + "，总重量 = " + totalWeight);
+
+        long endTime = System.currentTimeMillis();
+        //总耗时
+        System.out.println("总耗时 = " + (endTime - startTime));
+    }
+
+    private List<Food> generatorFoodList() {
+        //随机生成10000条食物信息
+        List<Food> newFoodList = new ArrayList<>(10000);
+        for (int i = 0; i < 10000 ; i++) {
+            //得到集合最大foodId，在此基础上加1
+            Optional<Food> maxIdFoodInfo = foodList.stream().max(Comparator.comparingInt(Food::getId));
+            maxIdFoodInfo.ifPresent(maxFood -> {
+                //生成新食物信息
+                int foodId = maxFood.getId() + 1;
+                String foodName = maxFood.getName() + foodId;
+                int foodCount = maxFood.getCount() + 1;
+                double foodWeight = maxFood.getWeight() + 1D;
+                String foodColour = maxFood.getColour() + 1;
+                String foodColourDecription = "我是新食物，颜色为:" + maxFood.getColourDecription() + 1;
+                newFoodList.add(new Food(foodId, foodName, foodCount, foodWeight, foodColour, foodColourDecription));
+            });
+        }
+        return newFoodList;
     }
 }

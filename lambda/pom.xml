@@ -20,6 +20,11 @@
             <artifactId>rxjava3-observable</artifactId>
             <version>0.2.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <name>lambda</name>
