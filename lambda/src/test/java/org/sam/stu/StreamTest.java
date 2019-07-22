@@ -105,4 +105,28 @@ public class StreamTest {
         System.out.println("set = " + JSONArray.toJSONString(set));
     }
 
+    /**
+     * list集合无序测试
+     */
+    @Test
+    public void test9(){
+        List list = new ArrayList();
+        list.add("123");
+        list.add("samphin");
+        list.add("456");
+        int count = 0;
+        while(true){
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println("i = " + i + "，值 = " + list.get(i));
+            }
+            count ++ ;
+
+            if(count > 100){
+                break;
+            }
+            System.out.println("=============================");
+        }
+
+    }
+
 }
